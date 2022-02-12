@@ -1,0 +1,635 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="piqa.vsi" href="piqa.vsi.html" /><link rel="prev" title="piqa.utils.complex" href="piqa.utils.complex.html" />
+
+    <link rel="shortcut icon" href="_static/logo_dark.svg"/><meta name="generator" content="sphinx-4.4.0, furo 2022.01.02"/>
+        <title>piqa.utils.functional - PIQA documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=df49af52631e7917044a9c21a57f7b83170a6dd0" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=fade93df149f7c5fedb3ff897f799dc7d283b420" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f0f3f3;
+  --color-code-foreground: black;
+  --color-api-keyword: #006699;
+  --color-api-name: #00aa88;
+  --color-api-pre-name: #00aa88;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  --color-api-keyword: #66d9ef;
+  --color-api-name: #a6e22e;
+  --color-api-pre-name: #a6e22e;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #272822;
+  --color-code-foreground: #f8f8f2;
+  --color-api-keyword: #66d9ef;
+  --color-api-name: #a6e22e;
+  --color-api-pre-name: #a6e22e;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="piqa.html"><div class="brand">PIQA  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="piqa.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="_static/logo.svg" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="_static/logo_dark.svg" alt="Dark Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="piqa.fsim.html">piqa.fsim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piqa.gmsd.html">piqa.gmsd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piqa.haarpsi.html">piqa.haarpsi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piqa.lpips.html">piqa.lpips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piqa.mdsi.html">piqa.mdsi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piqa.psnr.html">piqa.psnr</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piqa.ssim.html">piqa.ssim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="piqa.tv.html">piqa.tv</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="piqa.utils.html">piqa.utils</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="piqa.utils.color.html">piqa.utils.color</a></li>
+<li class="toctree-l2"><a class="reference internal" href="piqa.utils.complex.html">piqa.utils.complex</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">piqa.utils.functional</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="piqa.vsi.html">piqa.vsi</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="module-piqa.utils.functional">
+<span id="piqa-utils-functional"></span><h1>piqa.utils.functional<a class="headerlink" href="#module-piqa.utils.functional" title="Permalink to this headline">¶</a></h1>
+<p>General purpose tensor functionals</p>
+<section id="members">
+<h2>Members<a class="headerlink" href="#members" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 90%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#piqa.utils.functional.channel_conv" title="piqa.utils.functional.channel_conv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">channel_conv</span></code></a></p></td>
+<td><p>Returns the channel-wise convolution of <span class="math notranslate nohighlight">\(x\)</span> with the kernel <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernel</span></span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#piqa.utils.functional.channel_convs" title="piqa.utils.functional.channel_convs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">channel_convs</span></code></a></p></td>
+<td><p>Returns the channel-wise convolution of <span class="math notranslate nohighlight">\(x\)</span> with the series of kernel <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernels</span></span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#piqa.utils.functional.filter_grid" title="piqa.utils.functional.filter_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_grid</span></code></a></p></td>
+<td><p>Returns the (quadrant-shifted) frequency grid for <span class="math notranslate nohighlight">\(x\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#piqa.utils.functional.gaussian_kernel" title="piqa.utils.functional.gaussian_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gaussian_kernel</span></code></a></p></td>
+<td><p>Returns the 1-dimensional Gaussian kernel of size <span class="math notranslate nohighlight">\(K\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#piqa.utils.functional.gradient_kernel" title="piqa.utils.functional.gradient_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gradient_kernel</span></code></a></p></td>
+<td><p>Returns <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernel</span></span></code> transformed into a gradient.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#piqa.utils.functional.haar_kernel" title="piqa.utils.functional.haar_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">haar_kernel</span></code></a></p></td>
+<td><p>Returns the horizontal Haar kernel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#piqa.utils.functional.kernel_views" title="piqa.utils.functional.kernel_views"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kernel_views</span></code></a></p></td>
+<td><p>Returns the <span class="math notranslate nohighlight">\(N\)</span>-dimensional views of the 1-dimensional kernel <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernel</span></span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#piqa.utils.functional.log_gabor" title="piqa.utils.functional.log_gabor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_gabor</span></code></a></p></td>
+<td><p>Returns the log-Gabor filter of <span class="math notranslate nohighlight">\(f\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#piqa.utils.functional.prewitt_kernel" title="piqa.utils.functional.prewitt_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prewitt_kernel</span></code></a></p></td>
+<td><p>Returns the Prewitt kernel.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#piqa.utils.functional.scharr_kernel" title="piqa.utils.functional.scharr_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scharr_kernel</span></code></a></p></td>
+<td><p>Returns the Scharr kernel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#piqa.utils.functional.sobel_kernel" title="piqa.utils.functional.sobel_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sobel_kernel</span></code></a></p></td>
+<td><p>Returns the Sobel kernel.</p></td>
+</tr>
+</tbody>
+</table></div>
+<dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.channel_conv">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">channel_conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.channel_conv" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L12-L39"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns the channel-wise convolution of <span class="math notranslate nohighlight">\(x\)</span> with the kernel <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernel</span></span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Tensor</em>) – A tensor, <span class="math notranslate nohighlight">\((N, C, *)\)</span>.</p></li>
+<li><p><strong>kernel</strong> (<em>Tensor</em>) – A kernel, <span class="math notranslate nohighlight">\((C', 1, *)\)</span>.</p></li>
+<li><p><strong>padding</strong> (<em>int</em>) – The implicit paddings on both sides of the input dimensions.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">tensor([[[[ 0.,  1.,  2.,  3.,  4.],</span>
+<span class="go">          [ 5.,  6.,  7.,  8.,  9.],</span>
+<span class="go">          [10., 11., 12., 13., 14.],</span>
+<span class="go">          [15., 16., 17., 18., 19.],</span>
+<span class="go">          [20., 21., 22., 23., 24.]]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kernel</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">channel_conv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
+<span class="go">tensor([[[[ 54.,  63.,  72.],</span>
+<span class="go">          [ 99., 108., 117.],</span>
+<span class="go">          [144., 153., 162.]]]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.channel_convs">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">channel_convs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.channel_convs" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L42-L77"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns the channel-wise convolution of <span class="math notranslate nohighlight">\(x\)</span> with
+the series of kernel <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernels</span></span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Tensor</em>) – A tensor, <span class="math notranslate nohighlight">\((N, C, *)\)</span>.</p></li>
+<li><p><strong>kernels</strong> (<em>List</em><em>[</em><em>Tensor</em><em>]</em>) – A list of kernels, each <span class="math notranslate nohighlight">\((C', 1, *)\)</span>.</p></li>
+<li><p><strong>padding</strong> (<em>int</em>) – The implicit paddings on both sides of the input dimensions.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">tensor([[[[ 0.,  1.,  2.,  3.,  4.],</span>
+<span class="go">          [ 5.,  6.,  7.,  8.,  9.],</span>
+<span class="go">          [10., 11., 12., 13., 14.],</span>
+<span class="go">          [15., 16., 17., 18., 19.],</span>
+<span class="go">          [20., 21., 22., 23., 24.]]]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kernels</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">channel_convs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kernels</span><span class="p">)</span>
+<span class="go">tensor([[[[ 54.,  63.,  72.],</span>
+<span class="go">          [ 99., 108., 117.],</span>
+<span class="go">          [144., 153., 162.]]]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.filter_grid">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">filter_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.filter_grid" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L271-L306"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns the (quadrant-shifted) frequency grid for <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>Tensor</em>) – An input tensor, <span class="math notranslate nohighlight">\((*, H, W)\)</span>.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The radius and phase tensors, both <span class="math notranslate nohighlight">\((H, W)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em>Tuple</em>[<em>Tensor</em>, <em>Tensor</em>]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="n">filter_grid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span>
+<span class="go">tensor([[0.0000, 0.2500, 0.5000, 0.5000, 0.2500],</span>
+<span class="go">        [0.2500, 0.3536, 0.5590, 0.5590, 0.3536],</span>
+<span class="go">        [0.5000, 0.5590, 0.7071, 0.7071, 0.5590],</span>
+<span class="go">        [0.5000, 0.5590, 0.7071, 0.7071, 0.5590],</span>
+<span class="go">        [0.2500, 0.3536, 0.5590, 0.5590, 0.3536]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phi</span>
+<span class="go">tensor([[-0.0000, -1.5708, -1.5708,  1.5708,  1.5708],</span>
+<span class="go">        [-0.0000, -0.7854, -1.1071,  1.1071,  0.7854],</span>
+<span class="go">        [-0.0000, -0.4636, -0.7854,  0.7854,  0.4636],</span>
+<span class="go">        [-3.1416, -2.6779, -2.3562,  2.3562,  2.6779],</span>
+<span class="go">        [-3.1416, -2.3562, -2.0344,  2.0344,  2.3562]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.gaussian_kernel">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">gaussian_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.gaussian_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L80-L121"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns the 1-dimensional Gaussian kernel of size <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[G(x) = \gamma \exp \left(\frac{(x - \mu)^2}{2 \sigma^2}\right)\]</div></div>
+<p>where <span class="math notranslate nohighlight">\(\gamma\)</span> is such that</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[\sum_{x = 1}^{K} G(x) = 1\]</div></div>
+<p>and <span class="math notranslate nohighlight">\(\mu = \frac{1 + K}{2}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>int</em>) – The kernel size <span class="math notranslate nohighlight">\(K\)</span>.</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – The standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> of the distribution.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The kernel vector, <span class="math notranslate nohighlight">\((K,)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An <span class="math notranslate nohighlight">\(N\)</span>-dimensional Gaussian kernel is separable, meaning that
+applying it is equivalent to applying a series of <span class="math notranslate nohighlight">\(N\)</span> 1-dimensional
+Gaussian kernels, which has a lower computational complexity.</p>
+</div>
+<p class="rubric">Wikipedia</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_blur">https://en.wikipedia.org/wiki/Gaussian_blur</a></p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian_kernel</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="go">tensor([0.1201, 0.2339, 0.2921, 0.2339, 0.1201])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.gradient_kernel">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">gradient_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.gradient_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L253-L268"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernel</span></span></code> transformed into a gradient.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>kernel</strong> (<em>Tensor</em>) – A convolution kernel, <span class="math notranslate nohighlight">\((K, K)\)</span>.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The gradient kernel, <span class="math notranslate nohighlight">\((2, 1, K, K)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">gradient_kernel</span><span class="p">(</span><span class="n">prewitt_kernel</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">torch.Size([2, 1, 3, 3])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.haar_kernel">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">haar_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.haar_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L163-L184"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns the horizontal Haar kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<em>int</em>) – The kernel (even) size <span class="math notranslate nohighlight">\(K\)</span>.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The kernel, <span class="math notranslate nohighlight">\((K, K)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+<p class="rubric">Wikipedia</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Haar_wavelet">https://en.wikipedia.org/wiki/Haar_wavelet</a></p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">haar_kernel</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">tensor([[ 0.5000, -0.5000],</span>
+<span class="go">        [ 0.5000, -0.5000]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.kernel_views">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">kernel_views</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.kernel_views" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L124-L160"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns the <span class="math notranslate nohighlight">\(N\)</span>-dimensional views of the 1-dimensional
+kernel <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernel</span></span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kernel</strong> (<em>Tensor</em>) – A kernel, <span class="math notranslate nohighlight">\((C, 1, K)\)</span>.</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – The number of dimensions <span class="math notranslate nohighlight">\(N\)</span>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The list of views, each <span class="math notranslate nohighlight">\((C, 1, \underbrace{1, \dots, 1}_{i}, K, \underbrace{1, \dots, 1}_{N - i - 1})\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em>List</em>[<em>Tensor</em>]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kernel</span> <span class="o">=</span> <span class="n">gaussian_kernel</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kernel</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">torch.Size([3, 1, 5])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">views</span> <span class="o">=</span> <span class="n">kernel_views</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">views</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span> <span class="n">views</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="go">(torch.Size([3, 1, 5, 1]), torch.Size([3, 1, 1, 5]))</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.log_gabor">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">log_gabor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.log_gabor" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L309-L337"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns the log-Gabor filter of <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<div class="math-wrapper"><div class="math notranslate nohighlight">
+\[G(f) = \exp \left( - \frac{\log(f / f_0)^2}{2 \sigma_f^2} \right)\]</div></div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> (<em>Tensor</em>) – A frequency tensor, <span class="math notranslate nohighlight">\((*,)\)</span>.</p></li>
+<li><p><strong>f_0</strong> (<em>float</em>) – The center frequency <span class="math notranslate nohighlight">\(f_0\)</span>.</p></li>
+<li><p><strong>sigma_f</strong> (<em>float</em>) – The bandwidth (log-)deviation <span class="math notranslate nohighlight">\(\sigma_f\)</span>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The filter tensor, <span class="math notranslate nohighlight">\((*,)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><em>Tensor</em></p>
+</dd>
+</dl>
+<p class="rubric">Wikipedia</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Log_Gabor_filter">https://en.wikipedia.org/wiki/Log_Gabor_filter</a></p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="n">filter_grid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">log_gabor</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="go">tensor([[0.0000, 0.3825, 0.7864, 0.7864, 0.3825],</span>
+<span class="go">        [0.3825, 0.5825, 0.8444, 0.8444, 0.5825],</span>
+<span class="go">        [0.7864, 0.8444, 0.9417, 0.9417, 0.8444],</span>
+<span class="go">        [0.7864, 0.8444, 0.9417, 0.9417, 0.8444],</span>
+<span class="go">        [0.3825, 0.5825, 0.8444, 0.8444, 0.5825]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.prewitt_kernel">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">prewitt_kernel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.prewitt_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L187-L206"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns the Prewitt kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The kernel, <span class="math notranslate nohighlight">\((3, 3)\)</span>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em>Tensor</em></p>
+</dd>
+</dl>
+<p class="rubric">Wikipedia</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Prewitt_operator">https://en.wikipedia.org/wiki/Prewitt_operator</a></p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prewitt_kernel</span><span class="p">()</span>
+<span class="go">tensor([[ 0.3333,  0.0000, -0.3333],</span>
+<span class="go">        [ 0.3333,  0.0000, -0.3333],</span>
+<span class="go">        [ 0.3333,  0.0000, -0.3333]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.scharr_kernel">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">scharr_kernel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.scharr_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L231-L250"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns the Scharr kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The kernel, <span class="math notranslate nohighlight">\((3, 3)\)</span>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em>Tensor</em></p>
+</dd>
+</dl>
+<p class="rubric">Wikipedia</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Scharr_operator">https://en.wikipedia.org/wiki/Scharr_operator</a></p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">scharr_kernel</span><span class="p">()</span>
+<span class="go">tensor([[ 0.1875,  0.0000, -0.1875],</span>
+<span class="go">        [ 0.6250,  0.0000, -0.6250],</span>
+<span class="go">        [ 0.1875,  0.0000, -0.1875]])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.sobel_kernel">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">sobel_kernel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.sobel_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L209-L228"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns the Sobel kernel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The kernel, <span class="math notranslate nohighlight">\((3, 3)\)</span>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><em>Tensor</em></p>
+</dd>
+</dl>
+<p class="rubric">Wikipedia</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Sobel_operator">https://en.wikipedia.org/wiki/Sobel_operator</a></p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sobel_kernel</span><span class="p">()</span>
+<span class="go">tensor([[ 0.2500,  0.0000, -0.2500],</span>
+<span class="go">        [ 0.5000,  0.0000, -0.5000],</span>
+<span class="go">        [ 0.2500,  0.0000, -0.2500]])</span>
+</pre></div>
+</div>
+</dd></dl>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="piqa.vsi.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">piqa.vsi</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="piqa.utils.complex.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">piqa.utils.complex</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2020-2022, François Rozet |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and 
+          <a href="https://github.com/pradyunsg/furo">Furo</a>.
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">piqa.utils.functional</a><ul>
+<li><a class="reference internal" href="#members">Members</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>
