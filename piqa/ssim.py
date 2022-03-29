@@ -187,10 +187,10 @@ def ms_ssim(
 
         css.append(torch.relu(cs) if i + 1 < m else torch.relu(ss))
 
-    msss = torch.stack(css, dim=-1)
-    msss = (msss ** weights).prod(dim=-1)
+    msss = torch.stack(css, dim=-1) ** weights
+    msss = msss.prod(dim=-1).mean(dim=-1)
 
-    return msss.mean(dim=-1)
+    return msss
 
 
 class SSIM(nn.Module):
@@ -244,7 +244,7 @@ class SSIM(nn.Module):
         assert_type(
             input, target,
             device=self.kernel.device,
-            dim_range=(3, -1),
+            dim_range=(3, 5),
             n_channels=self.kernel.size(0),
             value_range=(0., self.value_range),
         )
