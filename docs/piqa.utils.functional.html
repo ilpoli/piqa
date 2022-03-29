@@ -242,23 +242,26 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#piqa.utils.functional.kernel_views" title="piqa.utils.functional.kernel_views"><code class="xref py py-obj docutils literal notranslate"><span class="pre">kernel_views</span></code></a></p></td>
 <td><p>Returns the <span class="math notranslate nohighlight">\(N\)</span>-dimensional views of the 1-dimensional kernel <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernel</span></span></code>.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#piqa.utils.functional.log_gabor" title="piqa.utils.functional.log_gabor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_gabor</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#piqa.utils.functional.l2_norm" title="piqa.utils.functional.l2_norm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">l2_norm</span></code></a></p></td>
+<td><p>Returns the <span class="math notranslate nohighlight">\(L_2\)</span> norm of <span class="math notranslate nohighlight">\(x\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#piqa.utils.functional.log_gabor" title="piqa.utils.functional.log_gabor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">log_gabor</span></code></a></p></td>
 <td><p>Returns the log-Gabor filter of <span class="math notranslate nohighlight">\(f\)</span>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#piqa.utils.functional.prewitt_kernel" title="piqa.utils.functional.prewitt_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prewitt_kernel</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#piqa.utils.functional.prewitt_kernel" title="piqa.utils.functional.prewitt_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prewitt_kernel</span></code></a></p></td>
 <td><p>Returns the Prewitt kernel.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#piqa.utils.functional.scharr_kernel" title="piqa.utils.functional.scharr_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scharr_kernel</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#piqa.utils.functional.scharr_kernel" title="piqa.utils.functional.scharr_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scharr_kernel</span></code></a></p></td>
 <td><p>Returns the Scharr kernel.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#piqa.utils.functional.sobel_kernel" title="piqa.utils.functional.sobel_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sobel_kernel</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#piqa.utils.functional.sobel_kernel" title="piqa.utils.functional.sobel_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sobel_kernel</span></code></a></p></td>
 <td><p>Returns the Sobel kernel.</p></td>
 </tr>
 </tbody>
 </table></div>
 <dl class="py function">
 <dt class="sig sig-object py" id="piqa.utils.functional.channel_conv">
-<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">channel_conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.channel_conv" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L12-L39"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">channel_conv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.channel_conv" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L12-L50"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
 <dd><p>Returns the channel-wise convolution of <span class="math notranslate nohighlight">\(x\)</span> with the kernel <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernel</span></span></code>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -287,7 +290,7 @@
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="piqa.utils.functional.channel_convs">
-<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">channel_convs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.channel_convs" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L42-L77"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">channel_convs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">padding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.channel_convs" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L53-L88"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
 <dd><p>Returns the channel-wise convolution of <span class="math notranslate nohighlight">\(x\)</span> with
 the series of kernel <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernels</span></span></code>.</p>
 <dl class="field-list simple">
@@ -317,7 +320,7 @@ the series of kernel <code class="code highlight python docutils literal notrans
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="piqa.utils.functional.filter_grid">
-<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">filter_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.filter_grid" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L271-L306"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">filter_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.filter_grid" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L282-L317"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
 <dd><p>Returns the (quadrant-shifted) frequency grid for <span class="math notranslate nohighlight">\(x\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -350,7 +353,7 @@ the series of kernel <code class="code highlight python docutils literal notrans
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="piqa.utils.functional.gaussian_kernel">
-<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">gaussian_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.gaussian_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L80-L121"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">gaussian_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.gaussian_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L91-L132"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
 <dd><p>Returns the 1-dimensional Gaussian kernel of size <span class="math notranslate nohighlight">\(K\)</span>.</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[G(x) = \gamma \exp \left(\frac{(x - \mu)^2}{2 \sigma^2}\right)\]</div></div>
@@ -388,7 +391,7 @@ Gaussian kernels, which has a lower computational complexity.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="piqa.utils.functional.gradient_kernel">
-<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">gradient_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.gradient_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L253-L268"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">gradient_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.gradient_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L264-L279"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
 <dd><p>Returns <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernel</span></span></code> transformed into a gradient.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -410,7 +413,7 @@ Gaussian kernels, which has a lower computational complexity.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="piqa.utils.functional.haar_kernel">
-<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">haar_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.haar_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L163-L184"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">haar_kernel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.haar_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L174-L195"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
 <dd><p>Returns the horizontal Haar kernel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -434,7 +437,7 @@ Gaussian kernels, which has a lower computational complexity.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="piqa.utils.functional.kernel_views">
-<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">kernel_views</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.kernel_views" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L124-L160"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">kernel_views</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.kernel_views" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L135-L171"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
 <dd><p>Returns the <span class="math notranslate nohighlight">\(N\)</span>-dimensional views of the 1-dimensional
 kernel <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">kernel</span></span></code>.</p>
 <dl class="field-list simple">
@@ -462,8 +465,34 @@ kernel <code class="code highlight python docutils literal notranslate"><span cl
 </div>
 </dd></dl>
 <dl class="py function">
+<dt class="sig sig-object py" id="piqa.utils.functional.l2_norm">
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">l2_norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepdim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.l2_norm" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L351-L383"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<dd><p>Returns the <span class="math notranslate nohighlight">\(L_2\)</span> norm of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Tensor</em>) – A tensor, <span class="math notranslate nohighlight">\((*,)\)</span>.</p></li>
+<li><p><strong>dims</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – The dimensions along which to calculate the norm.</p></li>
+<li><p><strong>keepdim</strong> (<em>bool</em>) – Whether the output tensor has <code class="code highlight python docutils literal notranslate"><span class="n"><span class="pre">dims</span></span></code> retained or not.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Wikipedia</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Norm_(mathematics">https://en.wikipedia.org/wiki/Norm_(mathematics</a>)</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">tensor([[0., 1., 2.],</span>
+<span class="go">        [3., 4., 5.],</span>
+<span class="go">        [6., 7., 8.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">l2_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">tensor([6.7082, 8.1240, 9.6437])</span>
+</pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
 <dt class="sig sig-object py" id="piqa.utils.functional.log_gabor">
-<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">log_gabor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.log_gabor" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L309-L337"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">log_gabor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.log_gabor" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L320-L348"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
 <dd><p>Returns the log-Gabor filter of <span class="math notranslate nohighlight">\(f\)</span>.</p>
 <div class="math-wrapper"><div class="math notranslate nohighlight">
 \[G(f) = \exp \left( - \frac{\log(f / f_0)^2}{2 \sigma_f^2} \right)\]</div></div>
@@ -498,7 +527,7 @@ kernel <code class="code highlight python docutils literal notranslate"><span cl
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="piqa.utils.functional.prewitt_kernel">
-<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">prewitt_kernel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.prewitt_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L187-L206"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">prewitt_kernel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.prewitt_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L198-L217"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
 <dd><p>Returns the Prewitt kernel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -520,7 +549,7 @@ kernel <code class="code highlight python docutils literal notranslate"><span cl
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="piqa.utils.functional.scharr_kernel">
-<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">scharr_kernel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.scharr_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L231-L250"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">scharr_kernel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.scharr_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L242-L261"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
 <dd><p>Returns the Scharr kernel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -542,7 +571,7 @@ kernel <code class="code highlight python docutils literal notranslate"><span cl
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="piqa.utils.functional.sobel_kernel">
-<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">sobel_kernel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.sobel_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L209-L228"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
+<span class="sig-prename descclassname"><span class="pre">piqa.utils.functional.</span></span><span class="sig-name descname"><span class="pre">sobel_kernel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#piqa.utils.functional.sobel_kernel" title="Permalink to this definition">¶</a><a class="reference external" href="https://github.com/francois-rozet/piqa/tree/docs/piqa/utils/functional.py#L220-L239"><span class="viewcode-link"><i class="fa-solid fa-code"></i></span></a></dt>
 <dd><p>Returns the Sobel kernel.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
