@@ -1,0 +1,97 @@
+site_name: PIQA
+site_description: PyTorch Image Quality Assessment
+site_author: François Rozet
+site_url: https://francois-rozet.github.io/piqa/
+
+copyright: Copyright © 2020 - 2022, François Rozet
+
+repo_name: francois-rozet/piqa
+repo_url: http://github.com/francois-rozet/piqa
+edit_uri: ''
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      name: GitHub repository
+      link: http://github.com/francois-rozet/sbi
+    - icon: fontawesome/brands/twitter
+      name: Twitter account
+      link: https://twitter.com/FrancoisRozet
+
+nav:
+  - Home: index.md
+  # - Installation: install.md
+  # - Tutorials and Examples:
+  #     - Introduction:
+  #       - Getting started: tutorial/00_getting_started.md
+  #       - Amortized inference: tutorial/01_gaussian_amortized.md
+  #     - Examples:
+  #       - Hodgkin-Huxley example: examples/00_HH_simulator.md
+  # - Contribute: contribute.md
+  # - API: reference.md
+  # - FAQ: faq.md
+  # - Credits: credits.md
+
+theme:
+  name: material
+  palette:
+    primary: white
+    accent: deep orange
+  logo: static/logo.svg
+  features:
+    # - navigation.sections
+    # - toc.integrate
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          selection:
+            docstring_style: google
+          rendering:
+            docstring_section_style: list
+            heading_level: 3
+            members_order: source
+            merge_init_into_class: true
+            show_bases: false
+            show_if_no_docstring: false
+            show_root_full_path: true
+            show_root_heading: true
+            show_source: false
+            show_submodules: false
+      watch:
+        - piqa
+
+markdown_extensions:
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji
+  - pymdownx.extra
+  - pymdownx.details
+  - pymdownx.highlight:
+      pygments_style: manni
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shortener: true
+  - pymdownx.saneheaders
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - smarty
+
+extra_css:
+  - static/custom.css
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
